@@ -1,41 +1,62 @@
-# Create Topology in Cisco Packet Tracer
+# Topology
 
-This script creates a topology in Cisco Packet Tracer. The topology consists of a number of subnets, each with a number of PCs. The script also creates a "mother" PC that is connected to all of the subnets.
+A Python script to create a topology in Cisco Packet Tracer.
+
+## Author
+
+John Modica
 
 ## Usage
 
-To use the script, run it from the command line with the following arguments:
+1. Clone the repository.
 
+```
+git clone https://github.com/CybernetiX-S3C/Topology
+```
 
-python create_topology.py [command] [parameters]
+2. Move into directory.
 
+```
+cd Topology
+```
 
-The `command` argument can be one of the following:
+3. Install the dependencies.
 
-* `create`: Creates a new topology.
-* `help`: Prints a help message.
+```
+pip install -r requirements.txt
+```
 
-The `parameters` argument depends on the command. For the `create` command, the parameters are the number of subnets, the number of PCs per subnet, the mother IP address, and the IP addresses of the subnets.
+4. Run the script.
 
-## Example
+```
+python create_topology.py create
+```
 
-The following command creates a topology with 3 subnets, 2 PCs per subnet, a mother IP address of 192.168.1.1, and subnet IP addresses of 192.168.1.0, 192.168.2.0, and 192.168.3.0:
+This will create a topology with 3 subnets, 2 PCs per subnet, a mother IP address of 192.168.1.1, and subnet IP addresses of 192.168.1.0, 192.168.2.0, and 192.168.3.0. The topology data will be saved to a file called `topology.json`.
 
+## Help
 
-python create_topology.py create 3 2 192.168.1.1 192.168.1.0 192.168.2.0 192.168.3.0
+```
+usage: create_topology.py [-h] [-f FILE]
 
+Create a topology in Cisco Packet Tracer.
 
-## Output
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILE, --file FILE  Save the topology data to a file.
+```
+## Description
 
-If the script is successful, it will print the URL of the topology in Cisco Packet Tracer.
+This script uses the Cisco Packet Tracer API to create a topology. The script takes a few parameters, such as the number of subnets, the number of PCs per subnet, and the mother IP address. The script also allows you to save the topology data to a file.
 
-## Troubleshooting
+## Examples
 
-If the script fails, it will print an error message. The error message will usually indicate the reason for the failure.
+# Create a topology with 3 subnets, 2 PCs per subnet, and a mother IP address of 192.168.1.1.
+python create_topology.py create
+
+# Save the topology data to a file called 'topology.json'.
+python create_topology.py create --file topology.json
 
 ## License
 
 This script is released under the MIT License.
-
-## Author 
-John Modica

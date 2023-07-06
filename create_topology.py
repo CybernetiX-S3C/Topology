@@ -1,5 +1,5 @@
 import requests
-import sys
+import json
 
 def validate_input(subnets, pcs_per_subnet, mother_ip, subnet_ips):
   """Validates the input from the user.
@@ -8,7 +8,7 @@ def validate_input(subnets, pcs_per_subnet, mother_ip, subnet_ips):
     subnets: The number of subnets.
     pcs_per_subnet: The number of PCs per subnet.
     mother_ip: The mother IP address.
-    subnet_ips: The IP addresses of each subnet.
+    subnet_ips: The IP addresses of the subnets.
 
   Returns:
     True if the input is valid, False otherwise.
@@ -36,7 +36,7 @@ def create_topology(subnets, pcs_per_subnet, mother_ip, subnet_ips):
     subnets: The number of subnets.
     pcs_per_subnet: The number of PCs per subnet.
     mother_ip: The mother IP address.
-    subnet_ips: The IP addresses of each subnet.
+    subnet_ips: The IP addresses of the subnets.
 
   Returns:
     A URL to the topology in Cisco Packet Tracer.
@@ -89,18 +89,18 @@ def main():
     subnet_ips = []
     for i in range(subnets):
       subnet_ips.append(input("Enter the IP address of subnet {}: ".format(i + 1)))
+
+    topology_data = {
+      "subnets": subnets,
+      "pcs_per_subnet": pcs_per_subnet,
+      "mother_ip": mother_ip,
+      "subnet_ips": subnet_ips,
+    }
+
+    file_name = input("Enter the file name to save the topology data to (leave blank to save to 'topology.json'): ")
+    save_topology(topology_data, file_name)
   elif command == "help":
     print_help_message()
     return
   else:
-    print("Unknown command: {}".format(command))
-    return
-
-  url = create_topology(subnets, pcs_per_subnet, mother_ip, subnet_ips)
-  if url is not None:
-    print("Topology created successfully.")
-    print("URL: {}".format(url))
-
-if __name__ == "__main__":
-  main()
-  
+    print("Unknown

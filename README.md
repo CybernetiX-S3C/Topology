@@ -47,7 +47,9 @@ optional arguments:
 ```
 ## Description
 
+```
 This script uses the Cisco Packet Tracer API to create a topology. The script takes a few parameters, such as the number of subnets, the number of PCs per subnet, and the mother IP address. The script also allows you to save the topology data to a file.
+```
 
 ## Examples
 
